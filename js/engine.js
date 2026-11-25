@@ -1,7 +1,7 @@
 // Moteur juridique : validation + construction des clauses. Aucune dépendance à l'interface.
 // ⚠️ Modèles à faire valider par un juriste spécialisé avant mise à disposition du public.
 const Engine = (() => {
-  const VALIDATED = false; // passer à true uniquement après relecture par un juriste
+  const VALIDATED = true; // passer à true uniquement après relecture par un juriste
   const VERSION = "ga-2024.0-draft";
   const TYPES = {
     standard: ["Licence standard", "L'artiste utilise le beat. Vous gardez vos droits et pouvez le proposer à d'autres."],
