@@ -111,8 +111,7 @@ function route() {
     <div class="row"><a class="btn" href="#/new">Créer un contrat</a><a class="btn ghost" href="#/contracts">Mes contrats (${contracts().length})</a></div>
     <h2>Comment ça marche</h2><ol class="steps"><li><strong>Répondez aux questions</strong><span>Beatmaker, artiste, production, droits et crédits.</span></li><li><strong>Vérifiez le récapitulatif</strong><span>Vous pouvez revenir modifier chaque réponse.</span></li><li><strong>Téléchargez le PDF</strong><span>Prêt à être signé par les deux parties.</span></li></ol>
     <h2>Cinq contrats au choix</h2><div class="card types">${Object.values(E.TYPES).map(([t, x]) => `<p><strong>${t}</strong><br><span>${x}</span></p>`).join("")}</div>
-    <div class="warn">Les modèles de contrats doivent être validés par un juriste avant tout usage public. Les documents ne sont pas juridiquement garantis.</div>`;
-}
+    
 
 function submit() {
   const nums = (l) => l.map((s) => ({ name: s.name, percent: Number(s.percent) }));
