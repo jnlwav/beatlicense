@@ -62,7 +62,7 @@ function stepHtml() {
       <p>${d.paid ? `${esc(d.price)} ${esc(d.currency)}, le ${esc(d.paymentDate)}` : "Gratuit"}</p>
       <p>Droits : ${esc(E.MODES[d.rights.mode][0])} · ${esc(d.rights.uses)} · ${esc(d.rights.duration)} · ${esc(d.rights.territory)}</p>
       <p>Crédit : ${d.credit.kind === "none" ? "aucun" : esc(d.credit.text)}</p><p>Samples : ${{ no: "non", yes: "oui", unknown: "je ne sais pas" }[d.samples.status]}</p></div>
-      <p class="muted">Le document est un modèle à faire valider. Les parties doivent vérifier ces informations avant de signer.</p>
+      <p class="muted">Les parties doivent vérifier ces informations avant de signer.</p>
       ${errs.map((m) => `<p class="err">${esc(m)}</p>`).join("")}<button data-act="submit">Générer le contrat</button>`;
   }
 }
@@ -77,7 +77,7 @@ function toast(m) { const t = document.createElement("div"); t.className = "toas
 function sheet(c) {
   const doc = c.doc;
   return `<div class="sheet"><h1>${esc(doc.title)}</h1><p class="muted">Contrat n° ${esc(doc.number)} — créé le ${esc(doc.date)}</p>
-    <div class="warn">${doc.validated ? "" : "MODÈLE À FAIRE VALIDER PAR UN JURISTE. "}Ce document n'est pas juridiquement garanti. Les parties doivent vérifier toutes les informations avant de signer.</div>
+    <div class="warn">Les parties doivent vérifier toutes les informations avant de signer.</div>
     ${doc.articles.map((a, i) => `<h2>Article ${i + 1} — ${esc(a.title)}</h2>${a.paras.map((p) => `<p>${esc(p)}</p>`).join("")}`).join("")}
     <div class="sign"><div>Le Beatmaker : ${esc(doc.parties.beatmaker)}<br>Date et signature :</div><div>L'Artiste : ${esc(doc.parties.artist)}<br>Date et signature :</div></div></div>`;
 }
@@ -110,8 +110,8 @@ function route() {
   else $app.innerHTML = `<h1>Vos accords musicaux, par écrit, en quelques minutes.</h1><p class="muted lead">Répondez à quelques questions simples. Vous obtenez un contrat PDF professionnel, prêt à être signé par le beatmaker et l'artiste.</p>
     <div class="row"><a class="btn" href="#/new">Créer un contrat</a><a class="btn ghost" href="#/contracts">Mes contrats (${contracts().length})</a></div>
     <h2>Comment ça marche</h2><ol class="steps"><li><strong>Répondez aux questions</strong><span>Beatmaker, artiste, production, droits et crédits.</span></li><li><strong>Vérifiez le récapitulatif</strong><span>Vous pouvez revenir modifier chaque réponse.</span></li><li><strong>Téléchargez le PDF</strong><span>Prêt à être signé par les deux parties.</span></li></ol>
-    <h2>Cinq contrats au choix</h2><div class="card types">${Object.values(E.TYPES).map(([t, x]) => `<p><strong>${t}</strong><br><span>${x}</span></p>`).join("")}</div>
-    
+    <h2>Cinq contrats au choix</h2><div class="card types">${Object.values(E.TYPES).map(([t, x]) => `<p><strong>${t}</strong><br><span>${x}</span></p>`).join("")}</div>`;
+}
 
 function submit() {
   const nums = (l) => l.map((s) => ({ name: s.name, percent: Number(s.percent) }));

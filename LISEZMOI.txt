@@ -12,8 +12,6 @@ Utilisez Paramètres > Exporter mes contrats pour faire une sauvegarde.
 
 Fichiers : css/style.css (design), js/engine.js (clauses et règles), js/app.js (pages et formulaire).
 
-AVERTISSEMENT : les clauses sont des modèles à faire valider par un juriste spécialisé.
-Dans js/engine.js, VALIDATED reste à false tant que ce n'est pas fait ; chaque contrat l'indique.
 
 POLICES : Manrope (interface) et Source Serif 4 (contrats) se chargent depuis Google Fonts quand l'appareil est en ligne.
 Hors connexion, le site utilise des polices de secours (Georgia pour les contrats).

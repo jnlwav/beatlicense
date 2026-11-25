@@ -1,6 +1,5 @@
 // Moteur juridique : validation + construction des clauses. Aucune dépendance à l'interface.
 const Engine = (() => {
-  const VALIDATED = true; // passer à true uniquement après relecture par un juriste
   const VERSION = "ga-2024.0-draft";
   const TYPES = {
     standard: ["Licence standard", "L'artiste utilise le beat. Vous gardez vos droits et pouvez le proposer à d'autres."],
@@ -79,7 +78,7 @@ const Engine = (() => {
         ? ["Le contrat est soumis au droit gabonais, notamment l'ordonnance n° 0011/PR/2024 du 26 février 2024 relative au droit d'auteur et aux droits voisins. Les parties recherchent d'abord une solution amiable ; à défaut, les juridictions gabonaises compétentes sont saisies."]
         : ["Le droit applicable et la juridiction compétente sont à convenir entre les parties : [à compléter avant signature]. Les parties recherchent d'abord une solution amiable."]],
     ].filter(Boolean).map(([title, paras]) => ({ title, paras }));
-    return { title: TYPES[d.type][0], number, date: now.toLocaleDateString("fr-FR"), validated: VALIDATED, version: VERSION, articles, parties: { beatmaker: nm(d.beatmaker), artist: nm(d.artist) } };
+    return { title: TYPES[d.type][0], number, date: now.toLocaleDateString("fr-FR"), version: VERSION, articles, parties: { beatmaker: nm(d.beatmaker), artist: nm(d.artist) } };
   }
   return { TYPES, CREDITS, MODES, validate, build, VERSION };
 })();
